@@ -124,9 +124,15 @@ public class UserController {
 		m.addAttribute("seller",userService.getUserById(userId));
 		return "viewsellerinfo";
 	}
-	@RequestMapping(value = "/set_active_seller")
-	public String setActive() {
+	@RequestMapping(value = "/set_active_seller", method = RequestMethod.POST)
+	public String setActive(@RequestParam("userId")Integer userid) {
+		boolean status = userService.setActive(userid);
+		if(status==true) {
+			return "true";
+		}
+		else {
+			return "false";
+		}
 		
-		return null;
 	}
 }

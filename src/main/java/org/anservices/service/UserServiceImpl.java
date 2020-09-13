@@ -56,4 +56,19 @@ public class UserServiceImpl implements UserService{
 		return userRepository.findByUserId(userid);
 	}
 
+	@Override
+	public boolean setActive(Integer userid) {
+		try {
+			User user = userRepository.findByUserId(userid);
+			user.setActive(ACC_STATUS_ACTIVE);
+			userRepository.save(user);
+			return true;
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+		
+	}
+
 }

@@ -59,4 +59,10 @@ public interface UserService {
 	 * @return
 	 */
 	public User getUserById(Integer userid);
+	/**
+	 * set user status active
+	 * @param userid
+	 * @return
+	 */
+	public boolean setActive(Integer userid);
 }
