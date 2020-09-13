@@ -50,7 +50,6 @@ public class SellerController {
 	}
 	@RequestMapping(value="view_sell")
 	public String viewSeller(Model m,@RequestParam("sellerId")int sellId) {
-		sellId=sellId+1;
 		m.addAttribute("sellerView", sellerService.getViewSell(sellId));
 		return "viewsell";
 	}
