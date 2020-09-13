@@ -14,6 +14,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 
 @Controller
@@ -117,5 +118,15 @@ public class UserController {
 		Integer active=UserService.ACC_STATUS_INACTIVE;
 		m.addAttribute("sellerList", userService.getInactiveSeller(role, active));
 		return "adminseller";
+	}
+	@RequestMapping(value="/getseller")
+	public String getUserInfo(@RequestParam("userId")Integer userId,Model m) {
+		m.addAttribute("seller",userService.getUserById(userId));
+		return "viewsellerinfo";
+	}
+	@RequestMapping(value = "/set_active_seller")
+	public String setActive() {
+		
+		return null;
 	}
 }

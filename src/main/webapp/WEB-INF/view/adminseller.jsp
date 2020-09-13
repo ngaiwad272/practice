@@ -59,6 +59,7 @@
 							<td width="60%" style="background-color:gray;" valign="top">
 								<table id="listView">
 									<tr>
+										<th>UserId</th>
 										<th>Seller Name</th>
 										<th>Email</th>
 										<th>Phone</th>
@@ -67,11 +68,15 @@
 									</tr>
 									<c:forEach var="u" items="${sellerList}" varStatus="st">
 									<tr>
-										<td>${u.name}</td>
+										 <td id="userid">${u.userId}</td> 
+										<s:url var="getall" value="getseller">
+											<s:param name="userId">${u.userId}</s:param>
+										</s:url>
+										<td><a href="${getall}">${u.name}</a></td>
 										<td>${u.email}</td>
 										<td>${u.phone}</td>
 										<td>${u.active}</td>
-									<%-- 	<s:url var="approve" value="?">
+									<%-- 	<s:url var="approve" value="getseller">
 									<s:param name="sellerId" value="${u.sellerId}"></s:param>
 									<td><a href="${approve}">Active</a></td> --%>
 								<%-- </s:url> --%>
@@ -90,6 +95,8 @@
 		</td>
 	</tr>
 </table>
-</script>
 </body>
+<script type="text/javascript">
+
+</script>
 </html>

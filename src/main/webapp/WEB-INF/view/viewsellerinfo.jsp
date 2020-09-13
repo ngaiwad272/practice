@@ -7,11 +7,13 @@
 	String uname = (String)session.getAttribute("username");
 	Integer userId = (Integer)session.getAttribute("userId");
 %>   
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="ISO-8859-1">
 <title></title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
 <table border="1"  width="100%" align="center" style="background-color: gray;">
@@ -25,7 +27,6 @@
 			<table width="100%" align="center">
 			<tr>
 				<td>
-				<f:form action="" method="" enctype="">
 					<table width="100%" align="center">
 						<tr>
 							<td width="20%" style="background-color: orange;">
@@ -39,7 +40,7 @@
 											<label>Name</label>
 										</td>
 										<td>
-											<input type="text" id="sname" name="sname" value=${seller.sellerName} >
+											<input type="text" id="sname" name="sname" value=${seller.name} >
 										</td>
 									</tr>
 									<tr>	
@@ -55,26 +56,9 @@
 											<label>Email</label>
 										</td>
 										<td>
-											<input type="text" id="email" name="email">
+											<input type="text" id="email" name="email" value=${seller.email}>
 										</td>
 									</tr>
-									<tr>
-										<td>
-											<label>Phone</label>
-										</td>
-										<td>
-											<input type="text" id="phone" name="phone">
-										</td>
-									</tr>
-									<tr>
-										<td>
-											<label>City</label>
-										</td>
-										<td>
-											<input type="text" id="city" name="city">
-										</td>
-									</tr>	
-									
 									<tr>
 										<td>
 											
@@ -89,7 +73,6 @@
 							</td>
 						</tr>
 					</table>
-					</f:form>
 				</td>
 			</tr>		
 			</table>
@@ -102,18 +85,18 @@
 	</tr>
 </table>
 <script type="text/javascript">
-$(document).ready(function(){
+
+$(document).ready(function(){debugger;
 	$("#approved").click(function(){
 		$.ajax({
 			url : 'set_active_seller',
-			data : {userId:$("#userId").val()},
-			/* success : function(data){
-				$("#id_res_div").html(data); */
+			 data : {userId:$("#userId").val()},
+			 success : function(data){
+				$("#id_res_div").html(data); 
 			}
 		});
 	});
 });
-	
 </script>
 </body>
 </html>

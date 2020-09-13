@@ -50,4 +50,10 @@ public class UserServiceImpl implements UserService{
 		return userRepository.findByActiveAndRole(active,rolFlag);
 	}
 
+	@Override
+	public User getUserById(Integer userid) {
+		
+		return userRepository.findByUserId(userid);
+	}
+
 }

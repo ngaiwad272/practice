@@ -53,4 +53,10 @@ public interface UserService {
 	 * @return
 	 */
 	public List<User> getInactiveSeller(Integer rolFlag, Integer active);
+	/**
+	 * 
+	 * @param userid
+	 * @return
+	 */
+	public User getUserById(Integer userid);
 }
