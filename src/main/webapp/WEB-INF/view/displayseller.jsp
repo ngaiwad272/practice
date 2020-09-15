@@ -72,7 +72,7 @@
 										<td>${u.address}</td>
 										<td>${u.tillDate}</td>
 										<s:url var="url_view" value="/view_sell">
-									<s:param name="sellerId" value="${u.sellerId}"></s:param>
+									<s:param name="sellerId"> ${u.sellerId}</s:param>
 								</s:url>
 								<td><a href="${url_view}">View</a></td>
 									</tr>

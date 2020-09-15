@@ -67,14 +67,13 @@
 									</tr>
 									<c:forEach var="u" items="${sellsList}" varStatus="st">
 									<tr>
-										<td>${u.sellType}</td>
+									<s:url var="view_post" value="view_sell">
+										<s:param name="sellerId" value="${u.sellerId}"></s:param>
+									</s:url>
+										<td><a href="${view_post}">${u.sellType}</a></td>
 										<td>${u.sellSubType}</td>
 										<td>${u.address}</td>
 										<td>${u.tillDate}</td>
-										<s:url var="approve" value="?">
-									<s:param name="sellerId" value="${u.sellerId}"></s:param>
-									<td><a href="${approve}">Active</a></td>
-								</s:url>
 									</tr>
 									</c:forEach>
 								</table>

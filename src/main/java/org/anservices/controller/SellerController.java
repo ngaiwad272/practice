@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 @Controller
@@ -51,17 +52,24 @@ public class SellerController {
 	@RequestMapping(value="view_sell")
 	public String viewSeller(Model m,@RequestParam("sellerId")int sellId) {
 		m.addAttribute("sellerView", sellerService.getViewSell(sellId));
-		return "viewsell";
+		return "viewpostinfo";
 	}
 	@RequestMapping(value="adm_sells")
 	public String openAdminSell(Model m, Seller seller) {
 		m.addAttribute("sellsList", sellerService.getInactiveSeller(SellerService.SELL_STATUS_INACTIVE));
 		return "adminsell";
 	}
-	/*
-	 * @RequestMapping(value="get_inactive_seller") public String
-	 * getSellForApproved(Model m, Seller seller) {
-	 * 
-	 * return "redirect:ad_pan"; }
-	 */
+	
+	  @RequestMapping(value="getpost") 
+	  @ResponseBody
+	  public String getSellForApproved(@RequestParam("sellerId")Integer sellerId) {
+		  boolean status = sellerService.setActive(sellerId);
+			if(status==true) {
+				return "true";
+			}
+			else {
+				return "false";
+			}
+		}
+	 
 }

@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 
 @Controller
@@ -124,7 +126,8 @@ public class UserController {
 		m.addAttribute("seller",userService.getUserById(userId));
 		return "viewsellerinfo";
 	}
-	@RequestMapping(value = "/set_active_seller", method = RequestMethod.POST)
+	@RequestMapping(value = "/set_active_seller")
+	@ResponseBody
 	public String setActive(@RequestParam("userId")Integer userid) {
 		boolean status = userService.setActive(userid);
 		if(status==true) {

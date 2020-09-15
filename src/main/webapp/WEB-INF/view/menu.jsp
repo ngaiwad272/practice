@@ -22,7 +22,7 @@
 		<tr>
 			<td>
 			<% if(userId==null){
-				response.sendRedirect("/Blank/login");
+				response.sendRedirect("/login");
 			} else if(userId!=null && role==1){%>
 			<table>
 				<tr>
@@ -190,7 +190,7 @@
 <script type="text/javascript">
 	function fnCheckLoginStatus() {
 		if(<%=userId%>==null){
-			location.href = "/Blank/login";
+			location.href = "/login";
 		}
 		
 	}

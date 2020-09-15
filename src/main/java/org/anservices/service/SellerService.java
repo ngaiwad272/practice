@@ -30,11 +30,17 @@ public interface SellerService {
 	 * 
 	 * @return :specific sell for view
 	 */
-	public List<Seller> getViewSell(Integer sellId);
+	public Seller getViewSell(Integer sellId);
 	/**
 	 * 
 	 * @param cactive get all Inactive seller for approve
 	 * @return
 	 */
 	public List<Seller> getInactiveSeller(Integer cactive);
+	/**
+	 * 
+	 * @param sellerId
+	 * @return
+	 */
+	public boolean setActive(Integer sellerId);
 }

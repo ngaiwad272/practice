@@ -59,7 +59,7 @@
 							<td width="60%" style="background-color:gray;" valign="top">
 								<table id="listView">
 									<tr>
-										<th>UserId</th>
+										<!-- <th>UserId</th> -->
 										<th>Seller Name</th>
 										<th>Email</th>
 										<th>Phone</th>

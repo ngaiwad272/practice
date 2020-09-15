@@ -34,8 +34,7 @@ public class SellerServiceImpl implements SellerService{
 	}
 
 	@Override
-	public List<Seller> getViewSell(Integer sellId) {
-		
+	public Seller getViewSell(Integer sellId) {
 		return sellerRepository.findBySellerId(sellId);
 	}
 
@@ -44,24 +43,17 @@ public class SellerServiceImpl implements SellerService{
 		return sellerRepository.findByActive(cactive);
 	}
 
-	/*
-	 * @Override public void submitSell(Seller seller) { sellerDao.save(seller); }
-	 * 
-	 * @Override public User getUserDataForSell(int userId) { String fetchUserInfo =
-	 * "SELECT szuserid, szname, szemail, szphone, szusername, crole, clogin, cactive"
-	 * + " FROM user WHERE szuserid=?"; return
-	 * getJdbcTemplate().queryForObject(fetchUserInfo, new UserRowMapper(),userId);
-	 * }
-	 * 
-	 * @Override public List<Seller> fetchSell() { String
-	 * getAll="SELECT szsellid, szuserid, szphone, sztype, szsubtype, szaddress, sztilldate, szactive, szimage1 FROM sell"
-	 * ; return getJdbcTemplate().query(getAll, new SellerRowMapper() ); }
-	 * 
-	 * @Override public List<Seller> getViewSell(int sellId) { String fetchSell =
-	 * "SELECT szsellid, szuserid, szphone, sztype, szsubtype, szaddress, sztilldate, szactive, szimage1"
-	 * +" FROM sell WHERE szsellid=?"; return getJdbcTemplate().query(fetchSell, new
-	 * SellerRowMapper(),sellId); }
-	 */
-	
-	
+	@Override
+	public boolean setActive(Integer sellerId) {
+		try {
+			Seller seller = sellerRepository.findBySellerId(sellerId);
+			seller.setActive(SELL_STATUS_ACTIVE);
+			sellerRepository.save(seller);
+			return true;
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
 }

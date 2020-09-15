@@ -7,5 +7,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface SellerRepository extends JpaRepository<Seller, Integer>{
 	List<Seller> findByActive(Integer cactive);
-	List<Seller> findBySellerId(Integer sellerId);
+	Seller findBySellerId(Integer sellerId);
 }

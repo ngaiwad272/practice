@@ -69,7 +69,7 @@
 </body>
 <script type="text/javascript">
 	function fnNavRegister() {
-		location.href = "/Blank/reg_form";
+		location.href = "/reg_form";
 	}
 </script>
 </html>

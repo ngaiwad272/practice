@@ -86,17 +86,14 @@
 </table>
 <script type="text/javascript">
 
-$(document).ready(function(){
-	$("#approved").click(function(){debugger;
-		$.post({
-			url : 'set_active_seller',
-			 data : {userId:$("#userId").val()}
-			},
-		function(data,status) {
-			if(status){
-				$.get({
-					url:'adm_seller'
-				})
+$(document).ready(function(){debugger;
+	$("#approved").click(function(){
+		$.ajax({
+			url : 'set_active_seller?userId='+$("#userId").val(),
+			// data : {userId:$("#userId").val()},
+			 success : function(data){
+				 alert("hi");
+				 window.location.href="/adm_sells";
 			}
 		});
 	});
