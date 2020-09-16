@@ -109,7 +109,7 @@
 </table>
 <script type="text/javascript">
 	function fnClose() {
-		location.href = "/Blank/login"
+		location.href = "/login"
 	}
 </script>
 </body>
