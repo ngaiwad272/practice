@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -51,8 +52,13 @@ public class SellerController {
 	}
 	@RequestMapping(value="view_sell")
 	public String viewSeller(Model m,@RequestParam("sellerId")int sellId) {
-		m.addAttribute("sellerView", sellerService.getViewSell(sellId));
+		m.addAttribute(sellId);
 		return "viewpostinfo";
+	}
+	@ResponseBody
+	@RequestMapping(value="sellInfo/{id}")
+	public Seller viewSellIfo(@PathVariable("id") int sellId) {
+		return sellerService.getViewSell(sellId);
 	}
 	@RequestMapping(value="adm_sells")
 	public String openAdminSell(Model m, Seller seller) {

@@ -6,7 +6,8 @@
 <%
 	String uname = (String)session.getAttribute("username");
 	Integer userId = (Integer)session.getAttribute("userId");
-%>   
+%>
+
 
 <!DOCTYPE html>
 <html>
@@ -36,10 +37,11 @@
 								<table>
 									<tr>
 										<td>
-											<input type="hidden" id="sellerId" name="sellerId" value=${sellerView.sellerId} />
+											<input type="hidden" id="sellerId" name="sellerId" value=<%= request.getParameter("sellerId") %> />
 											<label>User Id</label>
 										</td>
 										<td>
+										<img alt="img" id="image"/>
 											<input type="text" id="sname" name="sname" value=${sellerView.userId} >
 										</td>
 									</tr>
@@ -95,17 +97,26 @@
 <script type="text/javascript">
 
 $(document).ready(function(){debugger;
-	$("#approved").click(function(){
-		$.ajax({
-			url : 'getpost?sellerId='+$("#sellerId").val(),
-			// data : {userId:$("#userId").val()},
-			 success : function(data){
-				 alert("hi");
-				 window.location.href="/adm_sells";
+
+	$.ajax({
+			url : 'sellInfo/' + $("#sellerId").val(),
+			success : function(data) {
+				// populate other vars val
+				$("#image").attr('src','data:image/png;base64,'+data.imageBytes);
 			}
 		});
+
+		$("#approved").click(function() {
+			$.ajax({
+				url : 'getpost?sellerId=' + $("#sellerId").val(),
+				// data : {userId:$("#userId").val()},
+				success : function(data) {
+					alert("hi");
+					window.location.href = "/adm_sells";
+				}
+			});
+		});
 	});
-});
 </script>
 </body>
 </html>
