@@ -14,6 +14,9 @@ public interface UserService {
 	public static final Integer ROLE_ADMIN=1;
 	public static final Integer ROLE_USER_SELLER=2;
 	public static final Integer ROLE_USER=3;
+	
+	public static final Integer PROFILE_EDIT_NO=1;
+	public static final Integer PROFILE_EDIT_YES=2;
 	/**
 	 * The Method handle the user Registration task.
 	 * @param user the new user detail as user Object.
@@ -65,4 +68,11 @@ public interface UserService {
 	 * @return
 	 */
 	public boolean setActive(Integer userid);
+	/**
+	 * update user profile by id
+	 * @param userId
+	 * @param user
+	 * @return
+	 */
+	public boolean saveProfile(Integer userId, User user);
 }

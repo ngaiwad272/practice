@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Transient;
 
 import org.hibernate.annotations.GeneratorType;
 
@@ -32,10 +33,35 @@ public class User {
 	private Integer active;
 	@Column(name="clogin")
 	private Integer loginStatus;
+	@Column(name="szimage1")
 	private Byte[] szimage1;
 	@Column(name="szrollflag")
 	private String rolFlag;
+	@Column(name = "szaddress")
+	private String address;
+	@Column(name = "szcountry")
+	private String country;
+	@Column(name = "szstate")
+	private String state;
+	@Column(name = "szdistrict")
+	private String district;
+	@Column(name = "sztaluka")
+	private String taluka;
+	@Column(name = "szcity")
+	private String city;
+	@Column(name = "szpincode")
+	private Integer pincode;
+	@Column(name = "cproedit")
+	private Integer proedit;
+	@Column(name = "szaadhar")
+	private String aadhar;
 	
+	public String getAadhar() {
+		return aadhar;
+	}
+	public void setAadhar(String aadhar) {
+		this.aadhar = aadhar;
+	}
 	public String getRolFlag() {
 		return rolFlag;
 	}
@@ -111,6 +137,54 @@ public class User {
 	}
 	public void setLoginStatus(Integer loginStatus) {
 		this.loginStatus = loginStatus;
+	}
+	public String getAddress() {
+		return address;
+	}
+	public void setAddress(String address) {
+		this.address = address;
+	}
+	public String getCountry() {
+		return country;
+	}
+	public void setCountry(String country) {
+		this.country = country;
+	}
+	public String getState() {
+		return state;
+	}
+	public void setState(String state) {
+		this.state = state;
+	}
+	public String getDistrict() {
+		return district;
+	}
+	public void setDistrict(String district) {
+		this.district = district;
+	}
+	public String getTaluka() {
+		return taluka;
+	}
+	public void setTaluka(String taluka) {
+		this.taluka = taluka;
+	}
+	public String getCity() {
+		return city;
+	}
+	public void setCity(String city) {
+		this.city = city;
+	}
+	public Integer getPincode() {
+		return pincode;
+	}
+	public void setPincode(Integer pincode) {
+		this.pincode = pincode;
+	}
+	public Integer getProedit() {
+		return proedit;
+	}
+	public void setProedit(Integer proedit) {
+		this.proedit = proedit;
 	}
 	
 }

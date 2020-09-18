@@ -39,6 +39,7 @@ public class UserController {
 				user.setRole(UserService.ROLE_USER);
 				user.setActive(UserService.ACC_STATUS_ACTIVE);
 			}else {
+				user.setProedit(UserService.PROFILE_EDIT_NO);
 				user.setRole(UserService.ROLE_USER_SELLER);
 				user.setActive(UserService.ACC_STATUS_INACTIVE);
 			}
@@ -70,8 +71,14 @@ public class UserController {
 				//Check the role and redirect to appropriate role control
 				if(loggedInUser.getRole().equals(UserService.ROLE_ADMIN)) {
 					//add Admin User detail in session(assign session to logged in user)
-					addUserInSession(loggedInUser, session);
-					return "redirect:dboard";
+					if(loggedInUser.getProedit().equals(UserService.PROFILE_EDIT_NO)){
+						addUserInSession(loggedInUser, session);
+						return "redirect:getprofile?userId="+loggedInUser.getUserId();
+					}
+					else {
+						addUserInSession(loggedInUser, session);
+						return "redirect:dboard";
+					}
 				}
 				else if(loggedInUser.getRole().equals(UserService.ROLE_USER_SELLER)) {
 					addUserInSession(loggedInUser, session);
@@ -79,8 +86,15 @@ public class UserController {
 				}
 				else if(loggedInUser.getRole().equals(UserService.ROLE_USER)){
 					//add General User detail in session(assign session to logged in user)
-					addUserInSession(loggedInUser, session);
-					return "redirect:dboard";
+					if(loggedInUser.getProedit().equals(UserService.PROFILE_EDIT_NO))
+					{
+						addUserInSession(loggedInUser, session);
+						return "redirect:getprofile?userId="+loggedInUser.getUserId();
+					}
+					else {
+						addUserInSession(loggedInUser, session);
+						return "redirect:dboard";
+					}
 				}
 				else {
 					//add error message and go back to login-form
@@ -137,5 +151,16 @@ public class UserController {
 			return "false";
 		}
 		
+	}
+	@RequestMapping(value = "/getprofile")
+	public String getUserProfile(@RequestParam("userId")Integer userId, Model m) {
+		m.addAttribute("user",userService.getUserById(userId));
+		return "userprofile";
+	}
+	@RequestMapping(value = "/submit_profile")
+	public String submitProfile(User user) {
+		Integer userId = user.getUserId();
+		userService.saveProfile(userId,user);
+		return "redirect:login?act=reg";
 	}
 }

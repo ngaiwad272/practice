@@ -70,4 +70,24 @@ public class UserServiceImpl implements UserService{
 		
 	}
 
+	@Override
+	public boolean saveProfile(Integer userId, User user) {
+		User olduser = userRepository.findByUserId(userId);
+		olduser.setName(user.getName());
+		olduser.setEmail(user.getEmail());
+		olduser.setPhone(user.getPhone());
+		olduser.setSzimage1(user.getSzimage1());
+		olduser.setAddress(user.getAddress());
+		olduser.setCountry(user.getCountry());
+		olduser.setState(user.getState());
+		olduser.setDistrict(user.getDistrict());
+		olduser.setTaluka(user.getTaluka());
+		olduser.setCity(user.getCity());
+		olduser.setPincode(user.getPincode());
+		olduser.setProedit(PROFILE_EDIT_YES);
+		olduser.setAadhar(user.getAadhar());
+		userRepository.save(olduser);
+		return true;
+	}
+
 }
