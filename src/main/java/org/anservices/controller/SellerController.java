@@ -36,18 +36,21 @@ public class SellerController {
 	@RequestMapping(value="submit_sell")
 	public String submitSeller(Seller seller) {
 		seller.setActive(SellerService.SELL_STATUS_INACTIVE);
-		/*
-		 * try { if(seller.getsImage()!=null) {
-		 * seller.setImageBytes(seller.getsImage().getBytes()); } }catch (Exception e) {
-		 * e.printStackTrace(); }
-		 */
+		try { 
+			if(seller.getsImage()!=null) {
+				seller.setImageBytes(seller.getsImage().getBytes()); 
+			} 
+		}catch (Exception e) {
+			e.printStackTrace(); 
+		}
+		 
 		sellerService.submitSell(seller);
 		//TODO:validation remainig
 		return "dashboard";
 	}
 	@RequestMapping(value="disp_seller")
 	public String displaySeller(Model m) {
-		m.addAttribute("sellerList", sellerService.fetchSell());
+		m.addAttribute("sellerList", sellerService.getActiveInactiveSeller(SellerService.SELL_STATUS_ACTIVE));
 		return "displayseller";
 	}
 	@RequestMapping(value="view_sell")
@@ -62,7 +65,7 @@ public class SellerController {
 	}
 	@RequestMapping(value="adm_sells")
 	public String openAdminSell(Model m, Seller seller) {
-		m.addAttribute("sellsList", sellerService.getInactiveSeller(SellerService.SELL_STATUS_INACTIVE));
+		m.addAttribute("sellsList", sellerService.getActiveInactiveSeller(SellerService.SELL_STATUS_INACTIVE));
 		return "adminsell";
 	}
 	

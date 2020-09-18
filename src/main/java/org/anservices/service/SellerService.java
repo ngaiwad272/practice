@@ -36,7 +36,7 @@ public interface SellerService {
 	 * @param cactive get all Inactive seller for approve
 	 * @return
 	 */
-	public List<Seller> getInactiveSeller(Integer cactive);
+	public List<Seller> getActiveInactiveSeller(Integer cactive);
 	/**
 	 * 
 	 * @param sellerId

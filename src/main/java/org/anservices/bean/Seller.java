@@ -6,6 +6,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import org.springframework.web.multipart.MultipartFile;
 
@@ -31,8 +32,9 @@ public class Seller {
 	@Column(name="szactive")
 	private Integer active;
 	
-	  
-	/* private MultipartFile sImage; */ 
+	@Transient  
+	private MultipartFile sImage; 
+	
 	@Column(name="szimage1") 
 	private byte[] imageBytes;
 	 
@@ -96,8 +98,12 @@ public class Seller {
 	public void setSellSubType(String sellSubType) {
 		this.sellSubType = sellSubType;
 	}
-	/*
-	 * public MultipartFile getsImage() { return sImage; } public void
-	 * setsImage(MultipartFile sImage) { this.sImage = sImage; }
-	 */
+	
+	public MultipartFile getsImage() { 
+		return sImage; 
+	} 
+	public void setsImage(MultipartFile sImage) { 
+		this.sImage = sImage; 
+	}
+	 
 }

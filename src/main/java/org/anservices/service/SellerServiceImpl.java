@@ -39,7 +39,7 @@ public class SellerServiceImpl implements SellerService{
 	}
 
 	@Override
-	public List<Seller> getInactiveSeller(Integer cactive) {
+	public List<Seller> getActiveInactiveSeller(Integer cactive) {
 		return sellerRepository.findByActive(cactive);
 	}
 

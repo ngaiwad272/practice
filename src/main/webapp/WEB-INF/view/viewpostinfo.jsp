@@ -33,7 +33,7 @@
 							<td width="20%" style="background-color: orange;">
 								<jsp:include page="menu.jsp"></jsp:include>
 							</td>
-							<td width="60%" style="background-color: yellow;">
+							<td width="40%" style="background-color: yellow;">
 								<table>
 									<tr>
 										<td>
@@ -41,7 +41,6 @@
 											<label>User Id</label>
 										</td>
 										<td>
-										<img alt="img" id="image"/>
 											<input type="text" id="sname" name="sname" value=${sellerView.userId} >
 										</td>
 									</tr>
@@ -81,6 +80,9 @@
 									</tr>
 								</table>
 							</td>
+							<td width="40%" style="background-color:green; ">
+								<img alt="img" id="image" width="100%"/>
+							</td>
 						</tr>
 					</table>
 				</td>
@@ -101,7 +103,10 @@ $(document).ready(function(){debugger;
 	$.ajax({
 			url : 'sellInfo/' + $("#sellerId").val(),
 			success : function(data) {
-				// populate other vars val
+				$('#sname').val(data.userId);
+				$('#phone').val(data.phone);
+				$('#sellType').val(data.sellType);
+				$('#sellSubType').val(data.sellSubType);
 				$("#image").attr('src','data:image/png;base64,'+data.imageBytes);
 			}
 		});
