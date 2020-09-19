@@ -97,7 +97,7 @@
 				</tr>
 				<tr>
 					<td>
-						<a href=""><b>>>Medical Emergency</b></a>
+						<a href="getmedicalhelp"><b>>>Medical Emergency</b></a>
 					</td>
 				</tr>
 				<tr>

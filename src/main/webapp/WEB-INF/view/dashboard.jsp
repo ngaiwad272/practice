@@ -9,9 +9,8 @@
 <body>
 <table border="1"  width="100%" align="center" style="background-color: gray;">
 	<tr>
-		<td height="80px">
-			<% String uname = (String)session.getAttribute("username"); %>
-			Header### HI:<%=uname %>
+		<td height="80px" width="100%">
+			<jsp:include page="header.jsp"></jsp:include>
 		</td>
 	</tr>
 	<tr>
