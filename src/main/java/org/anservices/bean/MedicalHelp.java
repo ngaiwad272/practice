@@ -1,5 +1,7 @@
 package org.anservices.bean;
 
+import java.time.LocalDateTime;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -38,6 +40,10 @@ public class MedicalHelp {
 	private String city;
 	@Column(name="szpincode")
 	private String pincode;
+	@Column(name="dtcreatehelpdate")
+	private LocalDateTime createhelpdate;
+	@Column(name="dtcompletedhelpdate")
+	private LocalDateTime completedhelpdate;
 	public MedicalHelp() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -119,5 +125,17 @@ public class MedicalHelp {
 	}
 	public void setPincode(String pincode) {
 		this.pincode = pincode;
+	}
+	public LocalDateTime getCreatehelpdate() {
+		return createhelpdate;
+	}
+	public void setCreatehelpdate(LocalDateTime createhelpdate) {
+		this.createhelpdate = createhelpdate;
+	}
+	public LocalDateTime getCompletedhelpdate() {
+		return completedhelpdate;
+	}
+	public void setCompletedhelpdate(LocalDateTime completedhelpdate) {
+		this.completedhelpdate = completedhelpdate;
 	}
 }

@@ -67,6 +67,33 @@ INSERT INTO `district` (`szdistrictid`, `szstateid`, `szstatecode`, `szdistrictn
 	(1, 1, 'MH', 'Nashik', 'NSK');
 /*!40000 ALTER TABLE `district` ENABLE KEYS */;
 
+-- Dumping structure for table db_an.help
+CREATE TABLE IF NOT EXISTS `help` (
+  `szhelp_id` int(11) NOT NULL AUTO_INCREMENT,
+  `szaddress` varchar(255) DEFAULT NULL,
+  `szcity` varchar(255) DEFAULT NULL,
+  `szrequirementdesc` varchar(255) DEFAULT NULL,
+  `szdistrict` varchar(255) DEFAULT NULL,
+  `szphone` varchar(255) DEFAULT NULL,
+  `szpincode` varchar(255) DEFAULT NULL,
+  `szpname` varchar(255) DEFAULT NULL,
+  `szrequirement` varchar(255) DEFAULT NULL,
+  `szrname` varchar(255) DEFAULT NULL,
+  `szstate` varchar(255) DEFAULT NULL,
+  `sztaluka` varchar(255) DEFAULT NULL,
+  `szuser_id` int(11) DEFAULT NULL,
+  `dtcreatehelpdate` datetime DEFAULT NULL,
+  `dtcompletedhelpdate` datetime DEFAULT NULL,
+  PRIMARY KEY (`szhelp_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=latin1;
+
+-- Dumping data for table db_an.help: ~2 rows (approximately)
+/*!40000 ALTER TABLE `help` DISABLE KEYS */;
+INSERT INTO `help` (`szhelp_id`, `szaddress`, `szcity`, `szrequirementdesc`, `szdistrict`, `szphone`, `szpincode`, `szpname`, `szrequirement`, `szrname`, `szstate`, `sztaluka`, `szuser_id`, `dtcreatehelpdate`, `dtcompletedhelpdate`) VALUES
+	(23, 'abnsk,ndkkd,nkssdd', 'Pune', 'ns', 'Pune', '7894652134', '411004', 'naksjd nskdo mdlww', 'Corona Bed', 'jhgkkhkhh bhjl nnjmkb', 'Maharashtra', 'Pune', 1, '2020-09-20 00:34:51', NULL),
+	(24, 'ahstbwg bvcf bxkk jjya', 'Pune', 'bnc jdhgdk ncjsu', 'Pune', '7898465213', '411001', 'abc', 'Ventilator', 'pqr', 'Maharashtra', 'Pune', 1, '2020-09-20 00:40:55', NULL);
+/*!40000 ALTER TABLE `help` ENABLE KEYS */;
+
 -- Dumping structure for table db_an.hibernate_sequence
 CREATE TABLE IF NOT EXISTS `hibernate_sequence` (
   `next_val` bigint(20) DEFAULT NULL
@@ -75,8 +102,8 @@ CREATE TABLE IF NOT EXISTS `hibernate_sequence` (
 -- Dumping data for table db_an.hibernate_sequence: ~2 rows (approximately)
 /*!40000 ALTER TABLE `hibernate_sequence` DISABLE KEYS */;
 INSERT INTO `hibernate_sequence` (`next_val`) VALUES
-	(13),
-	(13);
+	(25),
+	(25);
 /*!40000 ALTER TABLE `hibernate_sequence` ENABLE KEYS */;
 
 -- Dumping structure for table db_an.sell
@@ -91,7 +118,7 @@ CREATE TABLE IF NOT EXISTS `sell` (
   `szactive` int(1) DEFAULT '1',
   `szimage1` mediumblob,
   KEY `Index 1` (`szsellid`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=latin1;
 
 -- Dumping data for table db_an.sell: ~6 rows (approximately)
 /*!40000 ALTER TABLE `sell` DISABLE KEYS */;
