@@ -81,11 +81,6 @@ public class UserController {
 					}
 				}
 				else if(loggedInUser.getRole().equals(UserService.ROLE_USER_SELLER)) {
-					addUserInSession(loggedInUser, session);
-					return "redirect:dboard";
-				}
-				else if(loggedInUser.getRole().equals(UserService.ROLE_USER)){
-					//add General User detail in session(assign session to logged in user)
 					if(loggedInUser.getProedit().equals(UserService.PROFILE_EDIT_NO))
 					{
 						addUserInSession(loggedInUser, session);
@@ -95,6 +90,11 @@ public class UserController {
 						addUserInSession(loggedInUser, session);
 						return "redirect:dboard";
 					}
+				}
+				else if(loggedInUser.getRole().equals(UserService.ROLE_USER)){
+					//add General User detail in session(assign session to logged in user)
+						addUserInSession(loggedInUser, session);
+						return "redirect:dboard";
 				}
 				else {
 					//add error message and go back to login-form
